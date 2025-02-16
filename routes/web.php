@@ -6,8 +6,10 @@ use App\Http\Controllers\BerandaPnsController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\Kelurahan_pnsController;
 use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\MendaliController;
+use App\Http\Controllers\Opd_pnsController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PnsController;
 use App\Http\Controllers\PrestasiController;
@@ -58,7 +60,10 @@ Route::prefix('admin')->middleware(['auth', 'auth.Admin'])->group(function () { 
 
 
 Route::prefix('pns')->middleware(['auth', 'auth.Pns'])->group(function () { //ini route khusus untuk pns
-
+    Route::get('beranda', [BerandaPnsController::class, 'index'])->name('Pns.beranda');
+    Route::resource('opd-pns', Opd_pnsController::class);
+    Route::resource('kelurahan-pns', Kelurahan_pnsController::class);
+    Route::get('/data', [Kelurahan_pnsController::class, 'index'])->name('data_pns.index');
 });
 
 Route::get('logout', function () {

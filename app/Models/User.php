@@ -97,6 +97,7 @@ class Opds extends Model
         'sub_kegiatan',
         'anggaran',
         'komponen_belanja_khusus_stunting',
+        'indikator_id',
     ];
 
     protected $table = 'anggaran'; // Ensure this matches your actual table name
