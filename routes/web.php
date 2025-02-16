@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\BerandaAdminController;
 use App\Http\Controllers\BerandaPnsController;
 use App\Http\Controllers\ChartController;
@@ -20,6 +21,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Psy\VarDumper\PresenterAware;
+use App\Http\Controllers\Auth\RegisterController; // Adjust the path according to your controller
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 
 /*
@@ -71,6 +74,14 @@ Route::get('logout', function () {
     return redirect('/'); // Redirect to the desired route after logout
 })->name('logout'); // Naming the route
 
-use App\Http\Controllers\Auth\RegisterController; // Adjust the path according to your controller
+
 
 Route::get('/register-sneat', [RegisterController::class, 'showRegistrationForm'])->name('register_sneat');
+
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
