@@ -195,7 +195,7 @@
 
                 <div class="menu-inner-shadow"></div>
 
-                <ul class="menu-inner py-1">
+                <ul class="menu-inner py-1 mt-4" style="background-color: #d0f4de;">
                     <!-- Dashboard -->
                     <li class="menu-item {{ \Route::is('Admin.beranda')? 'active' : '' }}">
                         <a href="{{ route('Admin.beranda') }}" class="menu-link">
