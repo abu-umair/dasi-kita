@@ -81,7 +81,8 @@ class Opd_pnsController extends Controller
         // Redirect ke halaman detail dari model yang baru saja dibuat
 
         // $data_indikators = Modelss::where('indikator_id', $model->indikator_id)->latest()->paginate(50);
-        return redirect()->route('opd-pns.show', ['opd' => $model->indikator_id]);
+        // return redirect()->route('opd-pns.show', ['opd' => $model->indikator_id]);
+        return redirect()->route('opd-pns.show', ['opd_pn' => $model->indikator_id]);
     }
 
 
@@ -148,7 +149,7 @@ class Opd_pnsController extends Controller
         $model->fill($requestData);
         $model->save();
         flash('Data berhasil disimpan');
-        return redirect()->route('opd-pns.show', ['opd' => $model->indikator_id]);
+        return redirect()->route('opd-pns.show', ['opd_pn' => $model->indikator_id]);
 
         // return redirect()->route('opd.show', ['id' => $model->id]);
     }
